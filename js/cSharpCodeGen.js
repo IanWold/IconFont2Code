@@ -3,7 +3,7 @@ import { toUnicodeString } from './utils/stringUtils.js';
 export function generateCsharpCode(glyphs, prefixToRemove, csharpClassName, importedCSharpFieldMappings) {
     // Generate the field info array with {name, value}
     const ctx = {};
-    let cSharpFields = glyphs.map((glyph) => getCSharpFieldInfo(glyph, prefixToRemove, importedCSharpFieldMappings, ctx));
+    let cSharpFields = glyphs.map((glyph) => getCSharpFieldInfo(glyph, prefixToRemove, importedCSharpFieldMappings, ctx)).sort((field) => field.name);
 
     // Generate the C# code for the class with field info
     return generateCSharpCodeForClass(csharpClassName, cSharpFields);
